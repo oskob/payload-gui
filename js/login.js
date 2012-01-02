@@ -1,10 +1,12 @@
+
 $(function()
 {
-		
+alert("k");		
 //		alert(hex_md5('pantheon'));
 		
 	$('.alert').hide();
 	$('.wrong').hide();
+
 	
 	$('.close').click(function()
 	{
@@ -28,7 +30,7 @@ $(function()
 		{
 			var message = $('.alert .message');
 			message.animate({left: 10}, 50, function()
-
+			{
 
 				message.animate({left: -10}, 100, function()
 				{

@@ -1,7 +1,7 @@
 
 $(function()
 {
-alert("k");		
+	
 //		alert(hex_md5('pantheon'));
 		
 	$('.alert').hide();

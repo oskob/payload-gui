@@ -82,7 +82,7 @@ else if(isset($_GET['p']) && $_GET['p'] == 'save')
 		`date` = '" . addslashes($_POST['date']) . "', 
 		`to` = '" . addslashes($_POST['to']) . "', 
 		`from` = '" . addslashes($_POST['from']) . "'
-		WHERE id = '" . addslashes((int)$_POST) . "'";
+		WHERE id = '" . addslashes((int)$_POST['id']) . "'";
 
 		mysql_query($sql) or die(mysql_error());
 	

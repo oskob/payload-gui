@@ -8,16 +8,6 @@ $(function()
 		var img = new Image();
 		img.src = 'img/' + preload[i];
 	}
-	
-	
-	var mails = 
-		[
-			["Re: Hejsan jag är en räf", "You", "Mr Magoo", "2011-09-15 08:14:45", "Är du full nu igen?<br><br>Nu skriver jag ett långt mail. <br><br>hej vad långt"],
-			["Hejsan jag är en räf", "Mr Magoo", "You", "2011-09-15 04:34:50", "d:D:D:D"],
-			["Re: Jag undrar en sak...", "You", "Gnomer", "2011-09-12 13:03:14", "Ja, för en gångs skull har du rätt."],
-			["Jag undrar en sak...", "Gnomer", "You", "2011-09-12 13:03:13", "hm. ja vet itne för ja e inte s åsmart, men äre så att gnomer suxar?"]
-		];
-		
 		
 	html = '';
 	for(var i = 0; i < mails.length; i++)

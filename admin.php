@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-require "settings.php";
+require "init.php";
 
 $auth = false;
 
@@ -10,33 +9,10 @@ if(isset($_SESSION['auth']) && $_SESSION['auth'] == 'true')
 	$auth = true;
 }
 
-if(!@mysql_connect($settings['dbhost'], $settings['dbuser'], $settings['dbpass']))
-{
-	echo "Could not connect to database";
-	exit;
-}
 
 
 
-if(!@mysql_select_db($settings['dbdb'])) // first time, setup
-{
-	$sql = "CREATE DATABASE IF NOT EXISTS " . $settings['dbdb'] . ";";
-	mysql_query($sql) or die(mysql_error());
-	mysql_select_db($settings['dbdb']);	
 
-	$sql = "CREATE TABLE mail (
-		id INT NOT NULL AUTO_INCREMENT,
-		subject VARCHAR(255),
-		message TEXT,
-		`date` DATETIME,
-		`to` VARCHAR(100),
-		`from` VARCHAR(100),
-		PRIMARY KEY (id)
-		)";
-	
-	mysql_query($sql) or dir(mysql_error());
-
-}
 
 
 if(isset($_GET['p']) && $_GET['p'] == 'login')
@@ -128,7 +104,7 @@ else if(isset($_GET['p']) && $_GET['p'] == 'delete')
 
 
 
-			$res = mysql_query("SELECT * FROM mail");
+			$res = mysql_query("SELECT * FROM mail ORDER BY `date` DESC");
 
 			echo '<p><a href="admin.php?p=edit">Create message</a></p>';
 

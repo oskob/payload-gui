@@ -9,12 +9,6 @@ if(isset($_SESSION['auth']) && $_SESSION['auth'] == 'true')
 	$auth = true;
 }
 
-
-
-
-
-
-
 if(isset($_GET['p']) && $_GET['p'] == 'login')
 {
 	if($_POST['pass'] == 'räfmeisteR990')

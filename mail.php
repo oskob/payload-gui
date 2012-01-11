@@ -23,7 +23,7 @@ require "init.php";
 			[
 				<?php 
 				while($row = mysql_fetch_assoc($res)) { 
-				$message = str_replace($row['message'], "\n", '<br />');
+				$message = str_replace("\n", '<br />', $row['message']);
 				?>
 				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", "<?= $message ?>"],
 				<?php } ?>

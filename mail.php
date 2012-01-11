@@ -19,7 +19,7 @@ function mb_str_replace($needle, $replacement, $haystack) {
 		
 		<script type="text/javascript">
 		
-
+		var hej = 'hej hej //Rad'
 			<?php 
 				$sql = "SELECT * FROM mail ORDER BY `date` DESC";
 				$res = mysql_query($sql) or die(mysql_error());
@@ -29,7 +29,9 @@ function mb_str_replace($needle, $replacement, $haystack) {
 			[
 				<?php 
 				while($row = mysql_fetch_assoc($res)) { 
-				$message = mb_str_replace("\n", '<br />', addslashes($row['message']));
+				$message = addslashes($row['message']);
+				$message = mb_str_replace("\n", '<br />', $message);
+				$message = mb_str_replace("\r", '<br />', $message);
 				
 				?>
 				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", '<?= $message ?>'],

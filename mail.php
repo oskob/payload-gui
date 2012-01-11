@@ -21,8 +21,11 @@ require "init.php";
 
 			var mails = 
 			[
-				<?php while($row = mysql_fetch_assoc($res)) { ?>
-				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", "<?=$row['message']?>"],
+				<?php 
+				while($row = mysql_fetch_assoc($res)) { 
+				$message = str_replace($row['message'], "\n", '<br />');
+				?>
+				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", "<?= $message ?>"],
 				<?php } ?>
 				[]
 				

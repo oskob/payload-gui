@@ -1,5 +1,10 @@
 <?php
 require "init.php";
+
+function mb_str_replace($needle, $replacement, $haystack) {
+   return implode($replacement, mb_split($needle, $haystack));
+}
+
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -13,6 +18,7 @@ require "init.php";
 
 		
 		<script type="text/javascript">
+		
 
 			<?php 
 				$sql = "SELECT * FROM mail ORDER BY `date` DESC";
@@ -23,9 +29,10 @@ require "init.php";
 			[
 				<?php 
 				while($row = mysql_fetch_assoc($res)) { 
-				$message = htmlentities(str_replace("\n", '<br />', $row['message']), ENT_QUOTES);
+				$message = mb_str_replace("\n", '<br />', addslashes($row['message']));
+				
 				?>
-				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", "<?= $message ?>"],
+				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", '<?= $message ?>'],
 				<?php } ?>
 				[]
 				

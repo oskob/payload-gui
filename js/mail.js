@@ -1,3 +1,5 @@
+
+
 $(function()
 {
 	
@@ -14,9 +16,9 @@ $(function()
 	{
 		var item = mails[i];
 		html += '\
-		<tr class="row id-' + i + '" id="' + i + '">\
+		<tr class="row id-' + i + (item[5] ? ' read' : '') + '" id="' + i + '">\
 			<td class="nobg"></td>\
-			<td>' + item[0] + '</td>\
+			<td class="subject">' + item[0] + '</td>\
 			<td>' + item[1] + '</td>\
 			<td>' + item[2] + '</td>\
 			<td>' + item[3] + '</td>\
@@ -30,16 +32,25 @@ $(function()
 	}
 	
 	$('.mails tbody').html(html);
-
+	
+	$('.menu a').click(function()
+	{
+		alert("Server Maintenance:\nThis feature is not online at the moment.\nPlease try again later.");
+		return false;
+	});
+	
 	$('.mails tr.row').click(function()
 	{
-		
+
+		if($(this).hasClass('open')) return;
+		$(this).addClass('read');
 		$('.mails .body.open .mask').animate({height: 0}, 100);
 		$('.mails .open').removeClass('open');
 		
 		var id = $(this).attr('id');
 		var body = $('.mails .body.id-'+id);
 		var mask = body.find('.mask');
+		
 		
 		$('.mails .row.id-'+id).addClass('open');
 		$('.mails .body.id-'+id).addClass('open');

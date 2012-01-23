@@ -221,19 +221,42 @@ html, body
 	border: 1px solid #eee;
 }
 
-.mails .body.open td
+.mails .body.open td,
+.mails .row.open td
 {
-	background: #eee;
+	background: #b9c9e2;
 }
 .mails .body.open td.nobg
 {
 	background: none;
 }
 
+.mails .row
+{
+	font-weight: bold;
+}
+
+.mails .row.read
+{
+	font-weight: normal;
+}
+
+.mails .row .subject
+{
+	background-image: url('/img/mail_dot.png');
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+}
+
+.mails .row.read .subject
+{
+	background-image: url('');
+}
+
+
 .mails .row.open td
 {
-	background: #eee;
-	font-weight: bold;
+	
 }
 .mails .row.open td.nobg
 {

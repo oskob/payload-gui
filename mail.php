@@ -34,7 +34,7 @@ function mb_str_replace($needle, $replacement, $haystack) {
 				$message = mb_str_replace("\r", '<br />', $message);
 				
 				?>
-				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", '<?= $message ?>'],
+				["<?=$row['subject']?>", "<?=$row['from']?>", "<?=$row['to']?>", "<?= date('m/d/Y H:i:s', strtotime($row['date']))?>", '<?= $message ?>', <?=$row['read'] == '1' ? 'true' : 'false' ?>],
 				<?php } ?>
 				[]
 				

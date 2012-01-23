@@ -38,22 +38,24 @@ else if(isset($_GET['p']) && $_GET['p'] == 'save')
 			addslashes($_POST['message']) . "', '" .
 			addslashes($_POST['date']) . "', '" .
 			addslashes($_POST['to']) . "', '" .
-			addslashes($_POST['from']) . "'" .
+			addslashes($_POST['from']) . "', '" .
+			($_POST['read'] ? '1' : '0') . "'" .
 			")";
-			
+		
 		mysql_query($sql);
 		
 	}
 	else
 	{
+		print_r($_POST);
 		$sql = "UPDATE mail SET 
 		`subject` = '" . addslashes($_POST['subject']) . "', 
 		`message` = '" . addslashes($_POST['message']) . "', 
 		`date` = '" . addslashes($_POST['date']) . "', 
 		`to` = '" . addslashes($_POST['to']) . "', 
-		`from` = '" . addslashes($_POST['from']) . "'
+		`from` = '" . addslashes($_POST['from']) . "',
+		`read` = '" . (!empty($_POST['read']) ? '1' : '0') . "'
 		WHERE id = '" . addslashes((int)$_POST['id']) . "'";
-
 		mysql_query($sql) or die(mysql_error());
 	
 	}
@@ -171,6 +173,10 @@ else if(isset($_GET['p']) && $_GET['p'] == 'delete')
 					<tr>
 						<td>Message:</td>
 						<td><textarea name="message" cols="50" rows="15"><?= $mail ? $mail['message'] : ''?></textarea></td>
+					</tr>
+					<tr>
+						<td>Read:</td>
+						<td><input type="checkbox" name="read" value="true" <?= $mail['read'] == '1' ? 'checked="checked"' : ''?> /></td>
 					</tr>
 				</table>
 

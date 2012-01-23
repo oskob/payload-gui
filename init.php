@@ -9,8 +9,12 @@ if(!@mysql_connect($settings['dbhost'], $settings['dbuser'], $settings['dbpass']
 	exit;
 }
 
+//mysql_query("DROP DATABASE " . $settings['dbdb']);
+
 if(!@mysql_select_db($settings['dbdb'])) // first time, setup
 {
+	
+	
 	$sql = "CREATE DATABASE IF NOT EXISTS " . $settings['dbdb'] . ";";
 	mysql_query($sql) or die(mysql_error());
 	mysql_select_db($settings['dbdb']);	
@@ -22,6 +26,7 @@ if(!@mysql_select_db($settings['dbdb'])) // first time, setup
 		`date` DATETIME,
 		`to` VARCHAR(100),
 		`from` VARCHAR(100),
+		`read` INT,
 		PRIMARY KEY (id)
 		)";
 	
